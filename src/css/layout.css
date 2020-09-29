@@ -3,15 +3,28 @@ html, body {
 }
 p {
     align-content: center;
-    background-color: #495285;
-    color: #fff;
+    background-color: #BBBBBB;
+    color: #000000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 5em;
 }
+
 p > span {
     opacity: 0.9;
     text-align: center;
+    word-wrap: break-word;
+}
+
+.option {
+    align-content: center;
+    background-color: #BBBBBB;
+    color: #BBBBBB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 5em;
+    padding-left: 1em;
     word-wrap: break-word;
 }

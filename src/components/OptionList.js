@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 
-import {Button, Container, Divider, Grid, Header, Icon, Input, Popup} from 'semantic-ui-react'
+import {Button, Container, Divider, Grid, Header, Icon, Input, Popup, Form, Checkbox, Label} from 'semantic-ui-react'
 import {NavLink} from "react-router-dom";
 import {QUESTION} from "../helpers/pathHelper";
 
@@ -44,34 +44,37 @@ class OptionList extends PureComponent {
         return true;
     }
 
+    isSelected = (option) => {
+        return this.props.selectedOptionId == option.id;
+    }
+
     render() {
         return (
             <div>
-                <Grid divided='vertically'>
+                <Form>
                     {
                         this.props.optionList && this.props.optionList.length > 0 && this.props.optionList
                             .map(option =>
-                                <Grid.Row key={option.id}
-                                          color={this.props.selectedOptionId == option.id ? "green" : ""}>
-                                    <Grid.Column onClick={() => this.onclickOption(option.id)}
-                                                 width={(this.isPassiveAndAdminSession(option)) ? 14 : 16}>
-                                        <p>
-                                            <span>
-                                                {option.option}
-                                            </span>
-                                        </p>
-                                    </Grid.Column>
+                                <Form.Field key={option.id} disabled={this.props.selectedOptionId > 0} className={"option"}
+                                            onClick={() => this.onclickOption(option.id)}>
+                                    <Checkbox
+                                        celled
+                                        radio
+                                        label={option.option}
+                                        name={option.id}
+                                        value={option.option}
+                                        checked={this.isSelected(option)
+                                        }
+                                    />
+                                </Form.Field>
 
-                                    {this.isPassiveAndAdminSession(option) &&
-                                    <Grid.Column onClick={() => this.props.activateOption(option.id)} width={2}>
-                                        <p>
-                                            <span>Activate</span>
-                                        </p>
-                                    </Grid.Column>
-                                    }
-                                </Grid.Row>
+
                             )
                     }
+                </Form>
+
+                <br/><br/>
+                <Grid divided='vertically'>
                     {
                         !this.state.addNewOption
                         && <Popup content='Add New Option' trigger={<Button icon='add'
