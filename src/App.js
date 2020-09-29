@@ -29,49 +29,49 @@ import './css/layout.css';
 import {HOME, SIGNIN, SIGNUP, SURVEY, QUESTION, QUESTION_REPORT} from "./helpers/pathHelper"
 
 class App extends Component {
-    authBlock = (<Container content>
-        <Header logout={this.props.logout}/>
-        <Switch>
-            <Route path={HOME} exact component={MainPage}/>
-            <Route exact path={SURVEY + "/:_survey_id"} component={SurveyPage}/>
-            <Route exact path={QUESTION + "/:_question_id"} component={QuestionPage}></Route>
-            <Route exact path={QUESTION_REPORT + "/:_question_id"} component={QuestionReportPage}/>
-            <Route render={() => (<Redirect to={HOME}/>)}/>
-        </Switch>
-        <Footer/>
-    </Container>);
+  authBlock = (<Container content>
+    <Header logout={this.props.logout}/>
+    <Switch>
+      <Route path={HOME} exact component={MainPage}/>
+      <Route exact path={SURVEY + "/:_survey_id"} component={SurveyPage}/>
+      <Route exact path={QUESTION + "/:_question_id"} component={QuestionPage}></Route>
+      <Route exact path={QUESTION_REPORT + "/:_question_id"} component={QuestionReportPage}/>
+      <Route render={() => (<Redirect to={HOME}/>)}/>
+    </Switch>
+    <Footer/>
+  </Container>);
 
-    noAuthBlock = (<Container content>
-        <Switch>
-            <Route path={SIGNIN} exact component={SigninPage}/>
-            <Route path={SIGNUP} exact component={SignupPage}/>
-            <Route render={() => (<Redirect to={SIGNIN}/>)}/>
-        </Switch>
-    </Container>);
+  noAuthBlock = (<Container content>
+    <Switch>
+      <Route path={SIGNIN} exact component={SigninPage}/>
+      <Route path={SIGNUP} exact component={SignupPage}/>
+      <Route render={() => (<Redirect to={SIGNIN}/>)}/>
+    </Switch>
+  </Container>);
 
-    render() {
-        return (
-            (this.props.authReducer.username == null || this.props.authReducer.username == {} ? this.noAuthBlock : this.authBlock)
-        );
-    }
+  render() {
+    return (
+        (this.props.authReducer.username == null || this.props.authReducer.username == {} ? this.noAuthBlock : this.authBlock)
+    );
+  }
 }
 
 const mapStateToProps = ({authReducer, optionReducer, questionReducer, surveyReducer}) => {
-    return {
-        authReducer,
-        optionReducer,
-        questionReducer,
-        surveyReducer,
+  return {
+    authReducer,
+    optionReducer,
+    questionReducer,
+    surveyReducer,
 
-    };
+  };
 }
 
 const mapDispatchToProps = {
-    login,
-    logout,
-    selectOption,
-    loadQuestion,
-    fetchSurveyList
+  login,
+  logout,
+  selectOption,
+  loadQuestion,
+  fetchSurveyList
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
