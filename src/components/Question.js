@@ -91,7 +91,7 @@ class Question extends PureComponent {
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
-                <Grid> attached='bottom'>
+                <Grid>
                     <Grid.Row columns={5}>
                         {
                             this.getPreviousQuestionId() != null &&
@@ -99,16 +99,6 @@ class Question extends PureComponent {
                                          floated='left'>
                                 <p>
                                     <span>Back</span>
-                                </p>
-                            </Grid.Column>
-                        }
-
-                        {
-                            this.isAdmin() &&
-                            <Grid.Column as={NavLink} to={QUESTION_REPORT + "/" + this.props.questionId} exact={"true"}
-                                         >
-                                <p>
-                                    <span>Report</span>
                                 </p>
                             </Grid.Column>
                         }
@@ -123,6 +113,16 @@ class Question extends PureComponent {
                             </Grid.Column>
                         }
                     </Grid.Row>
+                    {
+                        this.isAdmin() &&
+                        <Grid.Row>
+                            <Grid.Column as={NavLink} to={QUESTION_REPORT + "/" + this.props.questionId} exact={"true"}>
+                                <p>
+                                    <span>Report</span>
+                                </p>
+                            </Grid.Column>
+                        </Grid.Row>
+                    }
                 </Grid>
             </div>
         );

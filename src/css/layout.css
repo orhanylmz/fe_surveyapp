@@ -1,5 +1,5 @@
 html, body {
-    background-color: #1111 !important;
+    background-color: #000000 !important;
 }
 p {
     align-content: center;
@@ -8,9 +8,9 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 6em;
+    min-height: 5em;
 }
 p > span {
-    opacity: 0.4;
+    opacity: 0.9;
     text-align: center;
 }

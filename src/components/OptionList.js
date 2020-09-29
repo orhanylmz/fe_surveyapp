@@ -52,7 +52,7 @@ class OptionList extends PureComponent {
                         this.props.optionList && this.props.optionList.length > 0 && this.props.optionList
                             .map(option =>
                                 <Grid.Row key={option.id}
-                                          color={this.props.selectedOptionId == option.id ? "blue" : ""}>
+                                          color={this.props.selectedOptionId == option.id ? "green" : ""}>
                                     <Grid.Column onClick={() => this.onclickOption(option.id)}
                                                  width={(this.isPassiveAndAdminSession(option)) ? 14 : 16}>
                                         <p>
