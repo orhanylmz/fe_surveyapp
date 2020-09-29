@@ -19,7 +19,7 @@ import {
 const initialState = {
     fetching: false,
     questionList: [],
-    questionIndex: null,
+    question: null,
     report: null
 }
 
@@ -98,17 +98,7 @@ export default (state = initialState, action) => {
         case LOAD_QUESTION:
             return {
                 ...state,
-                questionIndex: state.questionList.indexOf(state.questionList.filter(item => item.id == action.payload.id)[0])
-            }
-        case NEXT_QUESTION:
-            return {
-                ...state,
-                questionIndex: state.questionIndex == null ? 0 : Math.min([(state.questionIndex + 1), state.questionList.length -1])
-            }
-        case PREVIOUS_QUESTION:
-            return {
-                ...state,
-                questionIndex: state.questionIndex == null ? 0 : Math.max([(state.questionIndex - 1), 0])
+                question: action.payload
             }
         default:
             return state;

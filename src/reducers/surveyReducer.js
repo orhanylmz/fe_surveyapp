@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
         case LOAD_SURVEY:
             return {
                 ...state,
-                survey: state.surveyList.filter(item => item.id == action.payload.id)[0]
+                survey: action.payload
             }
         default:
             return state;

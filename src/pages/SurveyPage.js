@@ -20,6 +20,7 @@ class SurveyPage extends PureComponent {
                         fetchQuestionList={this.props.fetchQuestionList}
                         questionList={this.props.questionReducer.questionList}
                         activateQuestion={this.props.activateQuestion}
+                        loadQuestion={this.props.loadQuestion}
                 />
             </div>
         );
@@ -44,7 +45,8 @@ const mapDispatchToProps = {
     fetchSurveyList,
     addNewQuestion,
     fetchQuestionList,
-    activateQuestion
+    activateQuestion,
+    loadSurvey
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage);

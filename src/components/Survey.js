@@ -36,6 +36,7 @@ class Survey extends PureComponent {
                               fetchQuestionList={this.props.fetchQuestionList}
                               questionList={this.props.questionList}
                               activateQuestion={this.props.activateQuestion}
+                              loadQuestion={this.props.loadQuestion}
                 />
 
             </div>

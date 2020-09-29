@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {selectOption} from "../actions/optionAction"
 import {login, logout} from "../actions/authAction"
 import {loadQuestion} from "../actions/questionAction"
+import {loadSurvey} from "../actions/surveyAction"
 import {fetchSurveyList, addNewSurvey} from "../actions/surveyAction"
 
 import OptionList from "../components/OptionList"
@@ -24,7 +25,9 @@ class MainPage extends PureComponent {
                 <SurveyList surveyList={this.props.surveyReducer.surveyList}
                             fetchSurveyList={this.props.fetchSurveyList}
                             addNewSurvey={this.props.addNewSurvey}
-                            isAdmin={this.props.authReducer.isAdmin}></SurveyList>
+                            isAdmin={this.props.authReducer.isAdmin}
+                            loadSurvey={this.props.loadSurvey}
+                />
             </div>
         );
     }
@@ -45,7 +48,8 @@ const mapDispatchToProps = {
     selectOption,
     loadQuestion,
     addNewSurvey,
-    fetchSurveyList
+    fetchSurveyList,
+    loadSurvey
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

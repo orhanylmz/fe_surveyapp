@@ -42,13 +42,11 @@ export function addNewSurvey(surveyName, surveyDescription) {
     }
 }
 
-export function loadSurvey(id) {
+export function loadSurvey(survey) {
     return dispatch => {
         dispatch({
             type: LOAD_SURVEY,
-            payload: {
-                id
-            }
+            payload: survey
         })
     }
 }

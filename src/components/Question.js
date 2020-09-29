@@ -73,11 +73,10 @@ class Question extends PureComponent {
     render() {
         return (
             <div>
-                <br/><br/><br/><br/><br/>
                 <Header as='h2' inverted textAlign='center'>
                     {this.props.question && this.props.question.question}
                 </Header>
-
+                <br/><br/><br/>
                 <OptionList questionId={this.props.questionId}
                             isAdmin={this.props.isAdmin}
                             addNewOption={this.props.addNewOption}

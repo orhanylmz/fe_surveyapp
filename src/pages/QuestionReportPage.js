@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import QuestionReport from "../components/QuestionReport";
 import {login, logout} from "../actions/authAction";
 import {activateOption, addNewOption, fetchOptionList, selectOption} from "../actions/optionAction";
-import {loadQuestion, nextQuestion, previousQuestion, fetchReport} from "../actions/questionAction";
+import {loadQuestion, fetchReport} from "../actions/questionAction";
 import {fetchSurveyList} from "../actions/surveyAction";
 import {connect} from "react-redux";
 
@@ -41,8 +41,6 @@ const mapDispatchToProps = {
     fetchSurveyList,
     fetchOptionList,
     addNewOption,
-    nextQuestion,
-    previousQuestion,
     activateOption,
     fetchReport
 }

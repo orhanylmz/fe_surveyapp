@@ -2,7 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Grid, Input, Popup} from "semantic-ui-react";
 import {NavLink} from "react-router-dom";
-import {QUESTION} from "../helpers/pathHelper";
+import { Route , withRouter} from 'react-router-dom';
+import {QUESTION, SURVEY} from "../helpers/pathHelper";
 
 class QuestionList extends PureComponent {
     state = {
@@ -24,6 +25,11 @@ class QuestionList extends PureComponent {
         })
     }
 
+    onClickQuestion = (question) => {
+        this.props.loadQuestion(question);
+        this.props.history.push(QUESTION + "/" + question.id)
+    }
+
     isPassiveAndAdminSession = (question) => {
         if (!this.props.isAdmin) {
             return false;
@@ -41,7 +47,7 @@ class QuestionList extends PureComponent {
                     (this.props.questionList.length) && this.props.questionList
                         .map(question =>
                             <Grid.Row key={question.id}>
-                                <Grid.Column as={NavLink} to={QUESTION + "/" + question.id} exact={"true"}
+                                <Grid.Column onClick={() => this.onClickQuestion(question)} exact={"true"}
                                              width={this.isPassiveAndAdminSession(question) ? 14 : 16}>
                                     <p>
                                         <span>{question.question}</span>
@@ -80,4 +86,4 @@ class QuestionList extends PureComponent {
 
 QuestionList.propTypes = {};
 
-export default QuestionList;
+export default withRouter(QuestionList);

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {Button, Grid, Header, Input, Popup} from "semantic-ui-react";
 import {SURVEY} from "../helpers/pathHelper";
 import {NavLink, Redirect} from "react-router-dom";
+import { Route , withRouter} from 'react-router-dom';
+
 
 
 class SurveyList extends PureComponent {
@@ -33,6 +35,11 @@ class SurveyList extends PureComponent {
         })
     }
 
+    onClickSurvey = (survey) => {
+        this.props.loadSurvey(survey);
+        this.props.history.push(SURVEY + "/" + survey.id)
+    }
+
     render() {
         return (
             <div>
@@ -45,7 +52,7 @@ class SurveyList extends PureComponent {
                         (this.props.surveyList.length) && this.props.surveyList
                             .map(survey =>
                                 <Grid.Row key={survey.id}>
-                                    <Grid.Column as={NavLink} to={SURVEY + "/" + survey.id} exact={"true"}>
+                                    <Grid.Column exact={"true"} onClick={() => this.onClickSurvey(survey)}>
                                         <p>
                                             <span>{survey.name}</span>
                                             <span>{survey.description}</span>
@@ -79,4 +86,4 @@ class SurveyList extends PureComponent {
 
 SurveyList.propTypes = {};
 
-export default SurveyList;
+export default withRouter(SurveyList);

@@ -2,8 +2,6 @@ import axios from "axios";
 import {QUESTION_URL, SURVEY_URL} from "../helpers/urlHelper";
 
 export const LOAD_QUESTION = 'LOAD_QUESTION';
-export const NEXT_QUESTION = 'NEXT_QUESTION';
-export const PREVIOUS_QUESTION = 'PREVIOUS_QUESTION';
 
 export const FETCH_QUESTION_LIST = 'FETCH_QUESTION_LIST';
 export const FETCH_QUESTION_LIST_PENDING = "FETCH_QUESTION_LIST_PENDING";
@@ -53,29 +51,11 @@ export function addNewQuestion(surveyId, question) {
     }
 }
 
-export function loadQuestion(id) {
+export function loadQuestion(question) {
     return dispatch => {
         dispatch({
             type: LOAD_QUESTION,
-            payload: {
-                id
-            }
-        })
-    }
-}
-
-export function nextQuestion() {
-    return dispatch => {
-        dispatch({
-            type: NEXT_QUESTION
-        })
-    }
-}
-
-export function previousQuestion() {
-    return dispatch => {
-        dispatch({
-            type: PREVIOUS_QUESTION
+            payload: question
         })
     }
 }
