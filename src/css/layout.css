@@ -13,4 +13,5 @@ p {
 p > span {
     opacity: 0.9;
     text-align: center;
+    word-wrap: break-word;
 }

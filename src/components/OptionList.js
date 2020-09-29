@@ -56,7 +56,9 @@ class OptionList extends PureComponent {
                                     <Grid.Column onClick={() => this.onclickOption(option.id)}
                                                  width={(this.isPassiveAndAdminSession(option)) ? 14 : 16}>
                                         <p>
-                                            <span>{option.option}</span>
+                                            <span>
+                                                {option.option}
+                                            </span>
                                         </p>
                                     </Grid.Column>
 
